@@ -1,0 +1,177 @@
+<!-- Home.html main div -->
+<div ng-controller="main" class="main-menu transition-once" id="main-menu">
+
+    <div class="inner-logo noselect">
+        <img src="/img/logo-mastercraft.svg">
+    </div>
+
+    <div class="main-header noselect">
+        Mastercraft Bamboo Monitor Riser
+    </div>
+
+    <div class="main-description">
+        A beautiful & handcrafted monitor stand to reduce neck and eye strain.
+    </div>
+
+    <div class="main-buttons-container">
+        <button class="button main-bg" id="backThisProject">Back This Project</button>
+        <button class="button bookmark-button" id="bookmark">
+            <img src="/img/icon-bookmark.svg" class="bookmark-icon">
+            <div>Bookmark</div>
+        </button>
+    </div>
+    <!-- div that mainly contains backes, backers and days left -->
+    <!-- but it can be replaced by any 3 columns -->
+    <div class="info-bar">
+        <div>
+            <h2>$89,914</h2>
+            <p>of $100,000 is backed</p>
+        </div>
+        <div>
+            <h2>5,007</h2>
+            <p>total backers</p>
+        </div>
+        <div>
+            <h2>56</h2>
+            <p>days left</p>
+        </div>
+        
+    </div>
+
+    <!-- bar whose maximum value 100 and minimum 0 
+    when i change the ratio in the variable it change the bar to get filled as the ratio that i wrote -->
+
+    <div class="bar-container">
+        <div id="barValue" class="bar-value"></div>
+        <!-- <div id="barValue" class="bar-value" style="width:{{barWidth}}%"></div> -->
+    <!-- that is not an error , it's just code editor doesnt know how angularjs works xDD -->
+    </div>
+    <!-- bar value in numbers which is written inside the bar -->
+    <!-- <div class="bar-value-number">
+        {{barWidth}}%
+    </div> -->
+    <!-- About section -->
+    <div class="about">
+        <h2>About this project</h2>
+        <p>The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates
+             your screen to a more comfortable viewing 
+             height. Placing your monitor at eye level has the 
+             potential to improve your posture and make you more 
+             comfortable while at work, helping you stay focused on 
+             the task at hand.<br><br>
+            Featuring artisan craftsmanship
+            , the simplicity of design creates extra
+             desk space below your computer to allow notepads,
+              pens, and USB sticks to be stored under the stand.</p>
+    </div>
+<div class="items-container">
+    <!-- rewards and boxes section -->
+        <div class="items" ng-repeat="item in items" ng-hide="item.left==0">
+            <!-- this container will be visible if the amount left from the item is more than 0 
+            and show how many availabe -->
+            <div class="first-line">
+                <h2>{{item.title}}</h2>
+                <h3>Pledge ${{item.pledge}} or more</h3>
+            </div>
+            <div class="second-line">
+                <p>
+                    {{item.paragraph}}
+                </p>
+            </div>
+            <div class="third-line">
+                <div class="items-left-container">
+                    <div class="items-left-number">
+                        {{item.left}}
+                    </div>
+                    <div class="items-left-text">Left</div>
+                </div>
+                <button class="button main-bg">Select Reward</button>
+            </div>
+        </div>
+        <div class="items noselect" ng-repeat="item in items" ng-show="item.left==0">
+            <!-- this container will be visible if the amount left from the item is 0 
+            and show that its out of stock -->
+            <div class="first-line out-of-stock-nb">
+                <h2>{{item.title}}</h2>
+                <h3 class="out-of-stock-nb">Pledge ${{item.pledge}} or more</h3>
+            </div>
+            <div class="second-line out-of-stock-nb">
+                <p style="color: rgba(0, 0, 0, 0.3);">
+                    {{item.paragraph}}
+                </p>
+            </div>
+            <div class="third-line">
+                <div class="items-left-container out-of-stock-nb">
+                    <div class="items-left-number">
+                        {{item.left}}
+                    </div>
+                    <div class="items-left-text">Left</div>
+                </div>
+                <button class="button out-of-stock">Out of stock</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- All the hidden screens that i have to show manually by doing an action in site -->
+    <!-- 
+        .
+        .
+        .
+     -->
+     <!-- Pledge tab : -->
+
+     <div id="pledgeTab" class="pledge-tab display-none">
+         <!-- Header of the pledge tab -->
+        <div class="close">
+            <span class="material-icons icon-in-pledge" id="closePledge">
+                close
+            </span>
+        </div>
+        <div class="pledge-line pledge-title">
+            <p class="font-weight-high">Back this project</p>
+            <p class="tiny-parag">Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
+        </div>
+        <!-- content in the pledge tab -->
+        <div class="pledge-container">
+            <div class="pledge-box" ng-repeat="item in items" ng-hide="">
+                <div class="on-off noselect">
+                    <!-- Checkbox for choosen reward -->
+                    <span class="material-icons check-box-btn" ng-click="thisPledge(item.sort)">
+                        check_box_outline_blank
+                    </span>
+                </div>
+                <div class="inside-pledge-container">
+                    <!-- What insite each pledge item that comes from json file -->
+                    <div class="display-flex-row">
+                        <p class="each-title noselect">{{item.title}}</p>
+
+                        <p class="">Pledge ${{item.pledge}} or more</p>
+                         
+                        <div class="">
+                            <div class="">
+                                <div class="">
+                                    {{item.left}}
+                                </div>
+                                <div class="">Left</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="">
+                        <p style="color: rgba(0, 0, 0, 0.6);">
+                            {{item.paragraph}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+<div class="Thanks-for-support-container">
+    <h2>Page has been bookmarked</h2>
+</div>
+<!-- Home.html main /div -->
+
+</div>
